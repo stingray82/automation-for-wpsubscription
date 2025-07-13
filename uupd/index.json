@@ -1,0 +1,26 @@
+{
+    "slug": "automation-for-wpsubscription",
+    "name": "Automation for WPSubscriptions",
+    "version": "0.5",
+    "author": "reallyusefulplugins.com",
+    "author_homepage": "https://reallyusefulplugins.com",
+    "requires_php": "8.1",
+    "requires": "6.5",
+    "tested": "6.8.1",
+    "sections": {
+        "description": "A plugin to trigger workflows using Automator's with data from WPSubscriptions",
+        "installation": "1. Upload the `automation-for-wpsubscriptions` folder to the `/wp-content/plugins/` directory.<br />\r\n2. Activate the plugin through the 'Plugins' menu in WordPress.<br />\r\n3. Its now ready to use",
+        "frequently_asked_questions": "= How do I add use the plugin? =<br />\r\nYou need to call the required functions in Flowmattic or your Automator of choice as needed",
+        "changelog": "<h4>0.5 13 July 2025</h4><ul><li>New: Alpha Testing Release</li></ul>"
+    },
+    "last_updated": "2025-07-13 10:25:53",
+    "download_url": "https://github.com/stingray82/automation-for-wpsubscription/releases/latest/download/automation-for-wpsubscription.zip",
+    "banners": {
+        "low": "https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/banner-772x250.png",
+        "high": "https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/banner-1544x500.png"
+    },
+    "icons": {
+        "1x": "https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/icon-128.png",
+        "2x": "https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/icon-256.png"
+    }
+}

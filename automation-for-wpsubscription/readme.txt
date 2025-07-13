@@ -1,0 +1,31 @@
+=== Automation for WPSubscriptions ===
+Contributors: reallyusefulplugins
+Donate link: https://reallyusefulplugins.com/donate
+Tags: Automation for WPSubscriptions, Flowmattic
+Requires at least: 6.5
+Tested up to: 6.8.1
+Stable tag: 0.5
+Requires PHP: 8.1
+License: GPL-2.0-or-later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+
+A plugin to trigger workflows using Automator's with data from WPSubscriptions
+
+== Description ==
+A plugin to trigger workflows using Automator's with data from WPSubscriptions
+
+== Installation ==
+
+1. Upload the `automation-for-wpsubscriptions` folder to the `/wp-content/plugins/` directory.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Its now ready to use
+
+== Frequently Asked Questions ==
+
+= How do I add use the plugin? =
+You need to call the required functions in Flowmattic or your Automator of choice as needed
+
+ 
+== Changelog == 
+= 0.5 13 July 2025 =
+New: Alpha Testing Release
