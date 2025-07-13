@@ -39,9 +39,6 @@ define('WP_DEBUG_DISPLAY', false); // optional but recommended
 
 `add_action('rup_wpsco_subscription_cancelled', 'rup_wpsco_log_event_data');`
 
-`add_action('rup_wpsco_subscription_status_changed',
-'rup_wpsco_log_event_data');`
-
  
 
 `// Log handler`
@@ -129,8 +126,6 @@ rup_wpsco_subscription_expired
 
 rup_wpsco_subscription_cancelled
 
-rup_wpsco_subscription_status_changed
-
 <br>Payload Example:<br>
 ------------------------
 
@@ -140,15 +135,15 @@ Payload
 
 'subscription' =\> [ /\* subscription data \*/ ],
 
-'order'        =\> [ /\* detailed order info \*/ ],
+'order' =\> [ /\* detailed order info \*/ ],
 
-'customer'     =\> [ /\* customer info \*/ ],
+'customer' =\> [ /\* customer info \*/ ],
 
 // Optional only for \`status_changed\`
 
-'old_status'   =\> 'pending',
+'old_status' =\> 'pending',
 
-'new_status'   =\> 'active'
+'new_status' =\> 'active'
 
 ]
 
@@ -368,15 +363,5 @@ Example with Dummy Data:
 'email' =\> 'john\@example.com',
 
 'name' =\> 'John Doe'
-
-],
-
- 
-
-// Only included on status change
-
-'old_status' =\> 'pending',
-
-'new_status' =\> 'active'
 
 ]

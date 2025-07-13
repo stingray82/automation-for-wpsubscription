@@ -46,13 +46,6 @@ add_action('plugins_loaded', function () {
     add_action('subscrpt_subscription_cancelled_email_notification', function ($subscriptionId) {
         rup_wpsco_trigger_subscription_event('cancelled', $subscriptionId);
     }, 20, 1);
-
-    add_action('subscrpt_status_changed_admin_email_notification', function ($subscriptionId, $oldStatus, $newStatus) {
-        rup_wpsco_trigger_subscription_event('status_changed', $subscriptionId, [
-            'old_status' => $oldStatus,
-            'new_status' => $newStatus,
-        ]);
-    }, 20, 3);
 });
 
 function rup_wpsco_trigger_subscription_event($event, $subscriptionId, $extra = []) {
