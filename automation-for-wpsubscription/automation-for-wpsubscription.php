@@ -189,7 +189,7 @@ add_action( 'plugins_loaded', function() {
         'plugin_file' => rup_wpsco_automation_for__wpsubscription_MAIN_FILE,             // e.g. "simply-static-export-notify/simply-static-export-notify.php"
         'slug'        => rup_wpsco_automation_for__wpsubscription_SLUG,           // must match your updater‐server slug
         'name'        => 'Automation for WPSubscriptions',         // human‐readable plugin name
-        'version'     => rup_wpc_auto_automation_for__wpcourseware_VERSION, // same as the VERSION constant above
+        'version'     => rup_wpsco_automation_for__wpsubscription_VERSION, // same as the VERSION constant above
         'key'         => '',                 // your secret key for private updater
         'server'      => 'https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/index.json',
     ];
