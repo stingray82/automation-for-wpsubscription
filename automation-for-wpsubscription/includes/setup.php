@@ -1,4 +1,5 @@
 <?php
+
 if ( ! defined('ABSPATH') ) {
     exit; // Prevent direct access
 }
@@ -26,7 +27,6 @@ function rup_wpsco_admin_automation_page() {
     ?>
     <div class="wrap">
         <h1>WPSubscription Automation Tools</h1>
-
         <form method="post" style="margin-bottom:2em;">
             <h2>Trigger Real Hook</h2>
             <table class="form-table">
@@ -38,17 +38,13 @@ function rup_wpsco_admin_automation_page() {
             <input type="hidden" name="real_action" value="1">
             <?php submit_button('Simulate Real Expiry'); ?>
         </form>
-
         <hr>
-
         <form method="post">
             <h2>Simulate Fake Events (Static Payloads)</h2>
             <?php submit_button('Simulate Activated', 'primary', 'simulate_fake_activated'); ?>
             <?php submit_button('Simulate Cancelled', 'secondary', 'simulate_fake_cancelled'); ?>
-            <?php submit_button('Simulate Status Change', 'secondary', 'simulate_fake_status_changed'); ?>
             <?php submit_button('Simulate Expired', 'secondary', 'simulate_fake_expired'); ?>
         </form>
-
         <?php rup_wpsco_handle_automation_submissions(); ?>
     </div>
     <?php
@@ -66,7 +62,6 @@ function rup_wpsco_handle_automation_submissions() {
         if (function_exists('rup_wpsco_build_payload')) {
             do_action('rup_wpsco_subscription_expired', rup_wpsco_build_payload($id));
         }
-
         echo '<div class="notice notice-success"><p>Real expiry simulated for Subscription ID ' . esc_html($id) . '.</p></div>';
         return;
     }
@@ -79,11 +74,6 @@ function rup_wpsco_handle_automation_submissions() {
     if (isset($_POST['simulate_fake_cancelled'])) {
         do_action('rup_wpsco_subscription_cancelled', rup_wpsco_fake_payload('cancelled'));
         echo '<div class="notice notice-success"><p>Fake "Cancelled" event fired.</p></div>';
-    }
-
-    if (isset($_POST['simulate_fake_status_changed'])) {
-        do_action('rup_wpsco_subscription_status_changed', rup_wpsco_fake_payload('status_changed'));
-        echo '<div class="notice notice-success"><p>Fake "Status Changed" event fired.</p></div>';
     }
 
     if (isset($_POST['simulate_fake_expired'])) {
@@ -174,16 +164,8 @@ function rup_wpsco_fake_payload($type) {
             'subscription' => ['id' => 81, 'title' => 'Subscription #81', 'status' => 'cancelled'],
             'order' => $order,
             'customer' => ['id' => 1, 'email' => 'isabelle.smith@example.com', 'name' => 'Isabelle Smith']
-        ],
-        'status_changed' => [
-            'subscription' => ['id' => 81, 'title' => 'Subscription #81', 'status' => 'active'],
-            'order' => $order,
-            'customer' => ['id' => 1, 'email' => 'daniel.clarke@example.com', 'name' => 'Daniel Clarke'],
-            'old_status' => 'cancelled',
-            'new_status' => 'active'
         ]
     ];
 
     return $payloads[$type] ?? [];
 }
-
