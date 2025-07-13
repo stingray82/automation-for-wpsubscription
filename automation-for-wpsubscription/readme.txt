@@ -4,7 +4,7 @@ Donate link: https://reallyusefulplugins.com/donate
 Tags: Automation for WPSubscriptions, Flowmattic
 Requires at least: 6.5
 Tested up to: 6.8.1
-Stable tag: 0.5.2
+Stable tag: 0.5.3
 Requires PHP: 8.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,10 @@ You need to call the required functions in Flowmattic or your Automator of choic
 
  
 == Changelog == 
+= 0.5.3 13 July 2025 =
+New: Third Automatic Update Test
+Tweaked: Readme File
+
 = 0.5.2 13 July 2025 =
 New: Second Automatic Update Test
 
