@@ -5,7 +5,7 @@
  * Tested up to:      6.8.1
  * Requires at least: 6.5
  * Requires PHP:      8.1
- * Version:           0.5
+ * Version:           0.5.1
  * Author:            reallyusefulplugins.com
  * Author URI:        https://reallyusefulplugins.com
  * License:           GPL2
@@ -19,7 +19,7 @@ if ( ! defined('ABSPATH') ) {
 }
 
 // Define plugin constants
-define('rup_wpsco_automation_for__wpsubscription_VERSION', '0.5');
+define('rup_wpsco_automation_for__wpsubscription_VERSION', '0.5.1');
 define('rup_wpsco_automation_for__wpsubscription_SLUG', 'automation-for-wpsubscription'); // Replace with your unique slug if needed
 define('rup_wpsco_automation_for__wpsubscription_MAIN_FILE', __FILE__);
 define('rup_wpsco_automation_for__wpsubscription_DIR', plugin_dir_path(__FILE__));
