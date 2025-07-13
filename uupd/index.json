@@ -1,7 +1,7 @@
 {
     "slug": "automation-for-wpsubscription",
     "name": "Automation for WPSubscriptions",
-    "version": "0.5",
+    "version": "0.5.1",
     "author": "reallyusefulplugins.com",
     "author_homepage": "https://reallyusefulplugins.com",
     "requires_php": "8.1",
@@ -13,7 +13,7 @@
         "frequently_asked_questions": "= How do I add use the plugin? =<br />\r\nYou need to call the required functions in Flowmattic or your Automator of choice as needed",
         "changelog": "<h4>0.5.1 13 July 2025</h4><ul><li>New: First Automatic Update Test</li></ul><h4>0.5 13 July 2025</h4><ul><li>New: Alpha Testing Release</li></ul>"
     },
-    "last_updated": "2025-07-13 10:36:38",
+    "last_updated": "2025-07-13 10:37:10",
     "download_url": "https://github.com/stingray82/automation-for-wpsubscription/releases/latest/download/automation-for-wpsubscription.zip",
     "banners": {
         "low": "https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/banner-772x250.png",
