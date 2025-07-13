@@ -4,7 +4,7 @@ Donate link: https://reallyusefulplugins.com/donate
 Tags: Automation for WPSubscriptions, Flowmattic
 Requires at least: 6.5
 Tested up to: 6.8.1
-Stable tag: 0.5.3
+Stable tag: 0.5.4
 Requires PHP: 8.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -27,6 +27,10 @@ You need to call the required functions in Flowmattic or your Automator of choic
 
  
 == Changelog == 
+= 0.5.4 13 July 2025 =
+New: Workflow Setup Helpers in WP-Subscriptions ---> Automations
+New: Speed up Flowmattic Setup & Mapping
+
 = 0.5.3 13 July 2025 =
 New: Third Automatic Update Test
 Tweaked: Readme File
