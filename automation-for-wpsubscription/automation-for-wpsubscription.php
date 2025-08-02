@@ -5,7 +5,7 @@
  * Tested up to:      6.8.2
  * Requires at least: 6.5
  * Requires PHP:      8.1
- * Version:           0.5.6
+ * Version:           0.5.7
  * Author:            reallyusefulplugins.com
  * Author URI:        https://reallyusefulplugins.com
  * License:           GPL2
@@ -23,7 +23,7 @@ if ( ! defined('ABSPATH') ) {
 require_once __DIR__ . '/includes/setup.php'; // Flowmattic Admin Test located in Automation
 
 // Define plugin constants
-define('rup_wpsco_automation_for__wpsubscription_VERSION', '0.5.6');
+define('rup_wpsco_automation_for__wpsubscription_VERSION', '0.5.7');
 define('rup_wpsco_automation_for__wpsubscription_SLUG', 'automation-for-wpsubscription'); // Replace with your unique slug if needed
 define('rup_wpsco_automation_for__wpsubscription_MAIN_FILE', __FILE__);
 define('rup_wpsco_automation_for__wpsubscription_DIR', plugin_dir_path(__FILE__));
@@ -194,3 +194,14 @@ add_action( 'plugins_loaded', function() {
     // 3) Call the helper in the UUPD\V1 namespace:
     \RUP\Updater\Updater_V1::register( $updater_config );
 }, 20 );
+
+// MainWP Icon Filter
+add_filter('mainwp_child_stats_get_plugin_info', function($info, $slug) {
+
+    if ('automation-for-wpsubscription/automation-for-wpsubscription.php' === $slug) {
+        $info['icon'] = 'https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/icon-128.png'; // Supported types: jpeg, jpg, gif, ico, png
+    }
+
+    return $info;
+
+}, 10, 2);
