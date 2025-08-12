@@ -1,7 +1,7 @@
 {
     "slug": "automation-for-wpsubscription",
     "name": "Automation for WPSubscriptions",
-    "version": "0.5.8",
+    "version": "0.5.9",
     "author": "reallyusefulplugins.com",
     "author_homepage": "https://reallyusefulplugins.com",
     "requires_php": "8.1",
@@ -11,9 +11,9 @@
         "description": "A plugin to trigger workflows using Automator's with data from WPSubscriptions",
         "installation": "1. Upload the `automation-for-wpsubscriptions` folder to the `/wp-content/plugins/` directory.<br />\r\n2. Activate the plugin through the 'Plugins' menu in WordPress.<br />\r\n3. Its now ready to use",
         "frequently_asked_questions": "= How do I add use the plugin? =<br />\r\nYou need to call the required functions in Flowmattic or your Automator of choice as needed",
-        "changelog": "<h4>0.5.8 5 August 2025</h4><ul><li>Fixed: Comment out WP Icon Filter which is causing issues in latest MainWP</li></ul><h4>0.5.7 2 Aug 2025</h4><ul><li>New: MainWP Icon Filter</li></ul><h4>0.5.6 27 July 2025</h4><ul><li>New: Prepare Future Support for Preleases</li><li>New: Updated UUPD to 1.3.0</li></ul><h4>0.5.5 27 July 2025</h4><ul><li>New: Prepare Future Support for Preleases</li><li>New: Updated UUPD to 1.3.0</li></ul><h4>0.5.4 13 July 2025</h4><ul><li>New: Workflow Setup Helpers in WP-Subscriptions ---&gt; Automations</li><li>New: Speed up Flowmattic Setup &amp; Mapping</li></ul><h4>0.5.3 13 July 2025</h4><ul><li>New: Third Automatic Update Test</li><li>Tweaked: Readme File</li></ul><h4>0.5.2 13 July 2025</h4><ul><li>New: Second Automatic Update Test</li></ul><h4>0.5.1 13 July 2025</h4><ul><li>New: First Automatic Update Test</li></ul><h4>0.5 13 July 2025</h4><ul><li>New: Alpha Testing Release</li></ul>"
+        "changelog": "<h4>0.5.9 5 August 2025</h4><ul><li>New: Deploy Methodology</li><li>New: Production Test - New deploy.sh</li><li>Fixed: Icon Issue</li></ul><h4>0.5.8 5 August 2025</h4><ul><li>Fixed: Comment out WP Icon Filter which is causing issues in latest MainWP</li></ul><h4>0.5.7 2 Aug 2025</h4><ul><li>New: MainWP Icon Filter</li></ul><h4>0.5.6 27 July 2025</h4><ul><li>New: Prepare Future Support for Preleases</li><li>New: Updated UUPD to 1.3.0</li></ul><h4>0.5.5 27 July 2025</h4><ul><li>New: Prepare Future Support for Preleases</li><li>New: Updated UUPD to 1.3.0</li></ul><h4>0.5.4 13 July 2025</h4><ul><li>New: Workflow Setup Helpers in WP-Subscriptions ---&gt; Automations</li><li>New: Speed up Flowmattic Setup &amp; Mapping</li></ul><h4>0.5.3 13 July 2025</h4><ul><li>New: Third Automatic Update Test</li><li>Tweaked: Readme File</li></ul><h4>0.5.2 13 July 2025</h4><ul><li>New: Second Automatic Update Test</li></ul><h4>0.5.1 13 July 2025</h4><ul><li>New: First Automatic Update Test</li></ul><h4>0.5 13 July 2025</h4><ul><li>New: Alpha Testing Release</li></ul>"
     },
-    "last_updated": "2025-08-05 18:41:01",
+    "last_updated": "2025-08-12 13:20:04",
     "download_url": "https://github.com/stingray82/automation-for-wpsubscription/releases/latest/download/automation-for-wpsubscription.zip",
     "banners": {
         "low": "https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/banner-772x250.png",
