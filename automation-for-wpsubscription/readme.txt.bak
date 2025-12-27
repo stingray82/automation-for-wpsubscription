@@ -4,7 +4,7 @@ Donate link: https://reallyusefulplugins.com/donate
 Tags: Automation for WPSubscriptions, Flowmattic
 Requires at least: 6.5
 Tested up to: 6.8.2
-Stable tag: 0.5.8
+Stable tag: 0.5.9
 Requires PHP: 8.1
 License: GPL-2.0-or-later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -25,8 +25,13 @@ A plugin to trigger workflows using Automator's with data from WPSubscriptions
 = How do I add use the plugin? =
 You need to call the required functions in Flowmattic or your Automator of choice as needed
 
- 
-== Changelog == 
+
+== Changelog ==
+= 0.5.9 5 August 2025 =
+New: Deploy Methodology 
+New: Production Test - New deploy.sh 
+Fixed: Icon Issue
+
 = 0.5.8 5 August 2025 =
 Fixed: Comment out WP Icon Filter which is causing issues in latest MainWP
 
