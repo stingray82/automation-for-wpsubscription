@@ -2,10 +2,10 @@
 /**
  * Plugin Name:       Automation for WPSubscriptions
  * Description:       A plugin to capture WPSubscription triggers using an automator like flowmattic
- * Tested up to:      6.9
+ * Tested up to:      6.9.4
  * Requires at least: 6.5
  * Requires PHP:      8.1
- * Version:           0.5.9.1
+ * Version:           0.5.10
  * Author:            reallyusefulplugins.com
  * Author URI:        https://reallyusefulplugins.com
  * License:           GPL2
@@ -23,7 +23,7 @@ if ( ! defined('ABSPATH') ) {
 require_once __DIR__ . '/includes/setup.php'; // Flowmattic Admin Test located in Automation
 
 // Define plugin constants
-define('rup_wpsco_automation_for__wpsubscription_VERSION', '0.5.9.1');
+define('rup_wpsco_automation_for__wpsubscription_VERSION', '0.5.10');
 define('rup_wpsco_automation_for__wpsubscription_SLUG', 'automation-for-wpsubscription'); // Replace with your unique slug if needed
 define('rup_wpsco_automation_for__wpsubscription_MAIN_FILE', __FILE__);
 define('rup_wpsco_automation_for__wpsubscription_DIR', plugin_dir_path(__FILE__));
@@ -174,25 +174,59 @@ function rup_wpsco_trigger_subscription_event($event, $subscriptionId, $extra = 
 
 
 // ──────────────────────────────────────────────────────────────────────────
-//  Updater bootstrap (plugins_loaded priority 1):
+//  Updater bootstrap (plugins_loaded priority 20):
 // ──────────────────────────────────────────────────────────────────────────
 add_action( 'plugins_loaded', function() {
-    // 1) Load our universal drop-in. Because that file begins with "namespace UUPD\V1;",
-    //    both the class and the helper live under UUPD\V1.
+
+    /**
+     * 1) Load the bundled updater
+     *
+     * This is your *rescoped* copy of the Universal Updater (UUPD v2),
+     * now living under your own namespace (e.g. RUP\Updater).
+     *
+     */
     require_once __DIR__ . '/includes/updater.php';
 
-    // 2) Build a single $updater_config array:
+    /**
+     * 2) Define updater configuration
+     *
+     * REQUIRED:
+     * - vendor       Unique identifier for you (used for scoping)
+     * - slug         Must match your update server JSON
+     * - version      Current installed version
+     * - server       URL to JSON metadata or GitHub repo
+     *
+     * IMPORTANT:
+     * - vendor + slug uniquely identify this updater instance
+     * - cache keys and hooks are automatically scoped by these values (V2 feature)
+     */
     $updater_config = [
-        'plugin_file' => plugin_basename(__FILE__),             // e.g. "simply-static-export-notify/simply-static-export-notify.php"
-        'slug'        => rup_wpsco_automation_for__wpsubscription_SLUG,           // must match your updater‐server slug
-        'name'        => 'Automation for WPSubscriptions',         // human‐readable plugin name
-        'version'     => rup_wpsco_automation_for__wpsubscription_VERSION, // same as the VERSION constant above
-        'key'         => '',                 // your secret key for private updater
+        'vendor'      => 'RUP',
+        'plugin_file' => plugin_basename( __FILE__ ), // Required for plugins
+        'slug'        => rup_wpsco_automation_for__wpsubscription_SLUG,
+        'name'        => 'Automation for WPSubscriptions',
+        'version'     => rup_wpsco_automation_for__wpsubscription_VERSION,
+
+        // Optional (leave empty if not using auth-protected updates)
+        'key'         => '',
+
+        // Your update source (JSON endpoint or GitHub repo root)
         'server'      => 'https://raw.githubusercontent.com/stingray82/automation-for-wpsubscription/main/uupd/index.json',
     ];
 
-    // 3) Call the helper in the UUPD\V1 namespace:
-    \RUP\Updater\Updater_V1::register( $updater_config );
+    /**
+     * 3) Register the updater
+     *
+     * This bootstraps:
+     * - plugin update checks
+     * - plugin info popup (view details)
+     * - caching + remote fetch
+     *
+     * Uses your *rescoped* class:
+     *   \RUP\Updater\Updater_V2
+     */
+    \RUP\Updater\Updater_V2::register( $updater_config );
+
 }, 20 );
 
 // MainWP Icon Filter
