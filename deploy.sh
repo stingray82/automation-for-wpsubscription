@@ -2,7 +2,7 @@
 set -euo pipefail
 script_dir="$(cd -- "$(dirname -- "$0")" && pwd -P)"
 cd "$script_dir"
-[[ "${1:-}" != "--list-targets" ]] || { printf "%s\n" github local woo edd fluent hoster dlm surecart github+woo github+edd github+fluent github+hoster github+dlm github+surecart local+woo local+edd local+fluent local+hoster local+dlm local+surecart; exit 0; }
+[[ "${1:-}" != "--list-targets" ]] || { printf "%s\n" github github+local local woo edd fluent hoster dlm surecart github+woo github+edd github+fluent github+hoster github+dlm github+surecart local+woo local+edd local+fluent local+hoster local+dlm local+surecart; exit 0; }
 [[ -f deploy.cfg ]] || { echo 'Missing deploy.cfg' >&2; exit 1; }
 # Simple KEY=VALUE parser; no eval or shell execution from the config.
 while IFS= read -r line || [[ -n "$line" ]]; do
@@ -97,7 +97,11 @@ CHANGELOG_FILE="$(file_path "$CHANGELOG_FILE")"
 STATIC_FILE="$(file_path "$STATIC_FILE")"
 [[ -f "$plugin_file" ]] || { echo "Missing $plugin_file" >&2; exit 1; }
 [[ -f "$CHANGELOG_FILE" ]] || { echo "Missing $CHANGELOG_FILE" >&2; exit 1; }
-case "$DEPLOY_TARGET" in github|local|woo|edd|fluent|hoster|dlm|surecart|github+woo|github+edd|github+fluent|github+hoster|github+dlm|github+surecart|local+woo|local+edd|local+fluent|local+hoster|local+dlm|local+surecart) ;; *) echo 'Invalid DEPLOY_TARGET' >&2; exit 1;; esac
+case "$DEPLOY_TARGET" in github|github+local|local|woo|edd|fluent|hoster|dlm|surecart|github+woo|github+edd|github+fluent|github+hoster|github+dlm|github+surecart|local+woo|local+edd|local+fluent|local+hoster|local+dlm|local+surecart) ;; *) echo 'Invalid DEPLOY_TARGET' >&2; exit 1;; esac
+# Check github+local settings before any remote upload.
+if [[ "$DEPLOY_TARGET" == github+local && -z "${DEST_DIR:-}" ]]; then
+  echo '[ERROR] github+local requires DEST_DIR in deploy.cfg' >&2; exit 1
+fi
 # Dry runs need no remote credentials. Live runs load only chosen providers.
 if [[ "${DEPLOY_DRY_RUN:-0}" != 1 ]]; then
   [[ "$DEPLOY_TARGET" != *woo* ]] || load_credentials woo WOO_CREDENTIALS_FILE WOO_CREDENTIAL_PROFILE woo.env
@@ -366,6 +370,24 @@ PY
   echo '[INFO] GitHub: uploading ZIP asset...'
   curl --globoff -fsS -X POST -H "Authorization: Bearer $GITHUB_TOKEN" -H 'Content-Type: application/zip' --data-binary @"$zip_path" "https://uploads.github.com/repos/$GITHUB_REPO/releases/$id/assets?name=$(basename "$zip_path")" > "$tmp/asset.json"
   echo '[OK] GitHub release published.'
+fi
+# For github+local, copy only after GitHub has successfully published its ZIP.
+# Using a temporary file and rename avoids SyncBack observing a partially copied archive.
+if [[ "$DEPLOY_TARGET" == github+local ]]; then
+  [[ -n "${DEST_DIR:-}" ]] || { echo '[ERROR] github+local requires DEST_DIR in deploy.cfg' >&2; exit 1; }
+  local_destination="$(file_path "$DEST_DIR")"
+  mkdir -p "$local_destination" || { echo "[ERROR] Cannot create DEST_DIR: $local_destination" >&2; exit 1; }
+  local_filename="$(basename "$zip_path")"
+  local_target="$local_destination/$local_filename"
+  # Avoid inadvertently copying a ZIP onto itself.
+  if [[ "$(cd "$local_destination" && pwd -P)/$local_filename" == "$zip_path" ]]; then
+    echo '[INFO] Local ZIP already resides in DEST_DIR; no copy needed.'
+  else
+    local_tmp="$(mktemp "$local_destination/.${local_filename}.tmp.XXXXXXXX")" || { echo '[ERROR] Cannot create temporary file in DEST_DIR' >&2; exit 1; }
+    cp -p -- "$zip_path" "$local_tmp" || { rm -f -- "$local_tmp"; echo '[ERROR] Local release copy failed' >&2; exit 1; }
+    mv -f -- "$local_tmp" "$local_target" || { rm -f -- "$local_tmp"; echo '[ERROR] Local release rename failed' >&2; exit 1; }
+    echo "[OK] Local release copied: $local_target"
+  fi
 fi
 # Use the same release API request for Stackless, native UUPD Server and EDD adapter.
 # EDD differs only in its product identification and settings.
