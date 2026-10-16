@@ -1,13 +1,9 @@
 === Automation for WPSubscriptions ===
-Contributors: reallyusefulplugins
-Donate link: https://reallyusefulplugins.com/donate
 Tags: Automation for WPSubscriptions, Flowmattic
 Requires at least: 6.5
-Tested up to: 7.0.2
-Stable tag: 0.5.11
+Tested up to: 7.1.3
+Stable tag: 0.5.12
 Requires PHP: 8.1
-License: GPL-2.0-or-later
-License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
 A plugin to trigger workflows using Automator's with data from WPSubscriptions
 
@@ -27,6 +23,9 @@ You need to call the required functions in Flowmattic or your Automator of choic
 
 
 == Changelog ==
+= 0.5.12 16 October 2026 =
+Updated: UUPD Dependency Updated to Version 2.1 Stable
+
 = 0.5.11 24 July 2026 =
 Updated: UUPD Dependency Updated to Version 2.0 Stable
 
